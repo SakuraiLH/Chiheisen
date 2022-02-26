@@ -20,34 +20,17 @@
  * <https://www.gnu.org/licenses/>.
  *
  */
-
+#pragma once
 #include <iostream>
-#include <json.hpp>
 #include <MiraiCP.hpp>
-#include "CHSBotMsg.cpp"
+#include <json.hpp>
+#include "SoftwareString.h"
 
-using json = nlohmann::json;
-using namespace MiraiCP;
-
-// 插件实例
-class Main : public CPPPlugin {
+class BotInfoDisplay {
 public:
-  // 配置插件信息
-  Main() : CPPPlugin(PluginConfig("com.chiheisen.chip", "Chiheisen", "1", "SakuraiLH", "地平线!", "2022-02-26")) {}
-  void onEnable() override {
-    Event::processor.registerEvent<GroupMessageEvent>([](GroupMessageEvent e){
-      BotInfoDisplay BotInfoDisplayer;
-      BotInfoDisplayer.DisplaySoftwareVersion(e);
-    });
-  }
-
-  void onDisable() override {
-    /*插件结束*/
-  }
+	void DisplaySoftwareVersion(MiraiCP::GroupMessageEvent &e)
+	{
+		e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion));
+	}
 };
-
-// 绑定当前插件实例
-void MiraiCP::enrollPlugin() {
-  MiraiCP::enrollPlugin0(new Main());
-}
 
