@@ -37,3 +37,4 @@ add_library(
 	src/Chiheisen.cpp
 )
 target_include_directories(Chiheisen PUBLIC ${SOURCE_PATH})
+include_directories(include)
