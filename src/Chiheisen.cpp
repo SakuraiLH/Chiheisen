@@ -25,6 +25,7 @@
 #include <json.hpp>
 #include <MiraiCP.hpp>
 #include "CHSBotMsg.cpp"
+#include "CHSCommandJudge.cpp"
 
 using json = nlohmann::json;
 using namespace MiraiCP;
@@ -36,9 +37,20 @@ public:
   Main() : CPPPlugin(PluginConfig("com.chiheisen.chip", "Chiheisen", "1", "SakuraiLH", "地平线!", "2022-02-26")) {}
   void onEnable() override {
     Event::processor.registerEvent<GroupMessageEvent>([](GroupMessageEvent e){
-      BotInfoDisplay BotInfoDisplayer;
-      BotInfoDisplayer.DisplaySoftwareVersion(e);
-    });
+      auto IncomingMessage = e.message.toMiraiCode();
+      CommandJudge CommandJudger;
+      if (!CommandJudger.CommandLengthFilter(IncomingMessage))
+      {
+        return 0;
+      }
+      if (CommandJudger.CommandSelector(IncomingMessage, "/version"))
+      {
+        BotInfoDisplay BotInfoDisplayer;
+        BotInfoDisplayer.DisplaySoftwareVersion(e);
+      }
+      return 0;
+    }
+    );
   }
 
   void onDisable() override {
