@@ -25,4 +25,14 @@ namespace Chiheisen
         }
         return true;
     }
+    std::string CommandParameterPasseer(std::string ReceivedMessage, std::string CommandTrigger)
+    {
+        std::string CommandParameter = ReceivedMessage;
+        CommandParameter.substr(CommandTrigger.length());
+        while (CommandParameter[0] == ' ')
+        {
+            CommandParameter.substr(1);
+        }
+        return CommandParameter;
+    }
 }
