@@ -23,6 +23,30 @@
 #pragma once
 #include <iostream>
 
+	std::string ChiheisenTrueCXX =
+#ifdef __clang__
+	"Clang++";
+#else
+	"GNU GCC";
+#endif
+
+	std::string ChiheisenBuildOS =
+#ifdef __WIN32
+	"Windows";
+#elif __unix__ && !__linux__
+	"Unix";
+#elif __APPLE__
+	"MacOS";
+#elif __linux__
+	"Linux";
+#elif __FreeBSD__
+	"FreeBSD";
+#else
+	"Unknown";
+#endif
+	std::string ChiheisenCompileTime = __TIMESTAMP__;
+
+const std::string ChiheisenAuthorship = "SakuraiLH";
 const unsigned short MinChiheisenSoftwareVersion = 100;
 const std::string ChiheisenSoftwareDistributionCodename = "Alexanderite";
 const std::string ChiheisenSoftwareName = "Chihensen";
@@ -30,5 +54,12 @@ inline const std::string ChiheisenSoftwareVersionMainline = "1.0.0";
 const std::string FullChiheisenSoftwareVersion = ChiheisenSoftwareName + ' '
                                                + ChiheisenSoftwareDistributionCodename + ' '
                                                + ChiheisenSoftwareVersionMainline + '/'
-                                               + std::to_string(MinChiheisenSoftwareVersion);
-                                               // e.g. Chihensen Alexanderite 1.0.0/100
+                                               + std::to_string(MinChiheisenSoftwareVersion) + ' ' 
+                                               + "by" + ' ' + ChiheisenAuthorship + '\n'
+                                               + '[' + ChiheisenTrueCXX + ']'
+                                               + '(' + "Compiled with" + ' ' + ChiheisenBuildOS + ' ' + "at" + ' '
+                                               + ChiheisenCompileTime + ')';
+                                               // Info:
+                                               // Chihensen Alexanderite 1.0.0/100 by SakuraiLH
+                                               // [GNU GCC] (Compiled with Linux at Sat Mar  5 16:53:08 2022)
+                                               // 
