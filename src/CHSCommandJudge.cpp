@@ -8,7 +8,13 @@ namespace Chiheisen
 {
     bool CommandSelector(std::string ReceivedMessage, std::string CommandTrigger)
     {
-        if (ReceivedMessage == CommandTrigger) return true;
+        std::string SubStrTrigger = ReceivedMessage;
+        if (ReceivedMessage.length() > CommandTrigger.length())
+        {
+            return false;
+        }
+        SubStrTrigger.substr(0, CommandTrigger.length());
+        if (SubStrTrigger == CommandTrigger) return true;
         return false;
     }
     bool CommandLengthFilter(std::string ReceivedMessage)
