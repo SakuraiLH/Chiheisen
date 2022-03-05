@@ -26,6 +26,7 @@
 #include <MiraiCP.hpp>
 #include "CHSBotMsg.cpp"
 #include "CHSCommandJudge.cpp"
+#include "CHSHelpDoc.cpp"
 
 #define ReplyJudger(JudgeCondition) if(Chiheisen::CommandSelector(IncomingMessage, JudgeCondition))
 
@@ -48,6 +49,11 @@ public:
       ReplyJudger ("/version")
       {
         Chiheisen::DisplaySoftwareVersion(e);
+      }
+      ReplyJudger ("/help")
+      {
+        std::string HelpParameter = Chiheisen::CommandParameterPasseer(IncomingMessage, "/help");
+        HelpMainPage(e, HelpParameter);
       }
       return 0;
     }

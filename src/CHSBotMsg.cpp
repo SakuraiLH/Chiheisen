@@ -25,11 +25,12 @@
 #include <MiraiCP.hpp>
 #include <json.hpp>
 #include "SoftwareString.h"
+#include "HelpDoc.h"
 
 namespace Chiheisen
 {
 	void DisplaySoftwareVersion(MiraiCP::GroupMessageEvent &e)
 	{
-		e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion));
+		e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion + '\n' + BotMsgHelpInfo));
 	}
 }

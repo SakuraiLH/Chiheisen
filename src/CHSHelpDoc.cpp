@@ -24,41 +24,16 @@
 #include <iostream>
 #include <MiraiCP.hpp>
 #include <json.hpp>
-#include <typeinfo>
+#include "SoftwareString.h"
+#include "HelpDoc.h"
 
 namespace Chiheisen
 {
-    bool CommandSelector(std::string ReceivedMessage, std::string CommandTrigger)
-    {
-        std::string SubStrTrigger = ReceivedMessage;
-        if (ReceivedMessage.length() > CommandTrigger.length())
+    void HelpMainPage(MiraiCP::GroupMessageEvent &e, std::string Parameter)
+	{
+        if (Parameter == "n")
         {
-            return false;
+            e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion + '\n' + HelpMsgMainPage));
         }
-        SubStrTrigger.substr(0, CommandTrigger.length());
-        if (SubStrTrigger == CommandTrigger) return true;
-        return false;
-    }
-    bool CommandLengthFilter(std::string ReceivedMessage)
-    {
-        if (ReceivedMessage.length() >= 1024)
-        {
-            return false;
-        }
-        return true;
-    }
-    std::string CommandParameterPasseer(std::string ReceivedMessage, std::string CommandTrigger)
-    {
-        std::string CommandParameter = ReceivedMessage;
-        CommandParameter.substr(CommandTrigger.length());
-        while (CommandParameter[0] == ' ')
-        {
-            CommandParameter.substr(1);
-        }
-        if (CommandParameter == "")
-        {
-            return "n";
-        }
-        return CommandParameter;
-    }
+	}
 }
