@@ -37,16 +37,15 @@ public:
   Main() : CPPPlugin(PluginConfig("com.chiheisen.chip", "Chiheisen", "1", "SakuraiLH", "地平线!", "2022-02-26")) {}
   void onEnable() override {
     Event::processor.registerEvent<GroupMessageEvent>([](GroupMessageEvent e){
+      using namespace Chiheisen;
       auto IncomingMessage = e.message.toMiraiCode();
-      CommandJudge CommandJudger;
-      if (!CommandJudger.CommandLengthFilter(IncomingMessage))
+      if (!Chiheisen::CommandLengthFilter(IncomingMessage))
       {
         return 0;
       }
-      if (CommandJudger.CommandSelector(IncomingMessage, "/version"))
+      if (Chiheisen::CommandSelector(IncomingMessage, "/version"))
       {
-        BotInfoDisplay BotInfoDisplayer;
-        BotInfoDisplayer.DisplaySoftwareVersion(e);
+        Chiheisen::DisplaySoftwareVersion(e);
       }
       return 0;
     }

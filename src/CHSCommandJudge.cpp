@@ -4,9 +4,8 @@
 #include <json.hpp>
 #include <typeinfo>
 
-class CommandJudge
+namespace Chiheisen
 {
-public:
     bool CommandSelector(std::string ReceivedMessage, std::string CommandTrigger)
     {
         if (ReceivedMessage == CommandTrigger) return true;
@@ -20,4 +19,4 @@ public:
         }
         return true;
     }
-};
+}

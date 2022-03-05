@@ -26,11 +26,10 @@
 #include <json.hpp>
 #include "SoftwareString.h"
 
-class BotInfoDisplay {
-public:
+namespace Chiheisen
+{
 	void DisplaySoftwareVersion(MiraiCP::GroupMessageEvent &e)
 	{
 		e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion));
 	}
-};
-
+}
