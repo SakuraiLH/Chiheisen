@@ -27,6 +27,8 @@
 #include "CHSBotMsg.cpp"
 #include "CHSCommandJudge.cpp"
 
+#define ReplyJudger(JudgeCondition) if(JudgeCondition)
+
 using json = nlohmann::json;
 using namespace MiraiCP;
 
@@ -39,14 +41,16 @@ public:
     Event::processor.registerEvent<GroupMessageEvent>([](GroupMessageEvent e){
       using namespace Chiheisen;
       auto IncomingMessage = e.message.toMiraiCode();
-      if (!Chiheisen::CommandLengthFilter(IncomingMessage))
+      ReplyJudger (!Chiheisen::CommandLengthFilter(IncomingMessage))
       {
         return 0;
       }
-      if (Chiheisen::CommandSelector(IncomingMessage, "/version"))
+      ReplyJudger (Chiheisen::CommandSelector(IncomingMessage, "/version"))
       {
         Chiheisen::DisplaySoftwareVersion(e);
       }
+      
+
       return 0;
     }
     );
