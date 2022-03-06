@@ -35,5 +35,16 @@ namespace Chiheisen
         {
             e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion + '\n' + HelpMsgMainPage));
         }
+        else
+        {
+            if (DefaultHelpMsgDB[Parameter] != "")
+            {
+                e.group.sendMessage(DefaultHelpMsgDB[Parameter]);
+            }
+            else
+            {
+                e.group.sendMessage(HelpDocNotExist);
+            }
+        }
 	}
 }

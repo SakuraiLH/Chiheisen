@@ -36,6 +36,7 @@ const std::string HelpMsgMainPage = std::string("输入 /help 来查看帮助信
 // 默认词条
 
 const std::string HelpMsgVer = "Chiheisen 帮助档案 版本 " + std::to_string(MinChiheisenSoftwareVersion);
+const std::string HelpDocNotExist = "Chiheisen 没有找到请求的帮助档案。";
 nlohmann::json DefaultHelpMsgDB = {
     "Version", HelpMsgVer + '\n' + "Version 帮助词条:" + '\n' + "显示Chiheisen实例的版本。"
     "author", HelpMsgVer + '\n' + "Author: SakuraiLH <C> 2020-2022" + '\n' + "Chiheisen(地平线)基于 AGPLv3 开源。"
