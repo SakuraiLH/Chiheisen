@@ -30,21 +30,21 @@
 namespace Chiheisen
 {
     void HelpMainPage(MiraiCP::GroupMessageEvent &e, std::string Parameter)
-	{
+    {
         if (Parameter == "n")
         {
             e.group.sendMessage(MiraiCP::PlainText(FullChiheisenSoftwareVersion + '\n' + HelpMsgMainPage));
         }
         else
         {
-            if (DefaultHelpMsgDB[Parameter] != "")
+            if (DefaultHelpMsgDB[Parameter] != nlohmann::detail::value_t::null)
             {
-                e.group.sendMessage(DefaultHelpMsgDB[Parameter]);
+                e.group.sendMessage(MsgDBReadings);
             }
             else
             {
                 e.group.sendMessage(HelpDocNotExist);
             }
         }
-	}
+	  }
 }
