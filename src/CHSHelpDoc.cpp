@@ -39,6 +39,7 @@ namespace Chiheisen
         {
             if (DefaultHelpMsgDB[Parameter] != nlohmann::detail::value_t::null)
             {
+                std::string MsgDBReadings = DefaultHelpMsgDB[Parameter];
                 e.group.sendMessage(MsgDBReadings);
             }
             else
