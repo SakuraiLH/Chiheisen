@@ -31,11 +31,11 @@ namespace Chiheisen
     bool CommandSelector(std::string ReceivedMessage, std::string CommandTrigger)
     {
         std::string SubStrTrigger = ReceivedMessage;
-        if (ReceivedMessage.length() > CommandTrigger.length())
+        if (ReceivedMessage.length() < CommandTrigger.length())
         {
             return false;
         }
-        SubStrTrigger.substr(0, CommandTrigger.length());
+        SubStrTrigger = SubStrTrigger.substr(0, CommandTrigger.length());
         if (SubStrTrigger == CommandTrigger) return true;
         return false;
     }
@@ -50,10 +50,10 @@ namespace Chiheisen
     std::string CommandParameterPasseer(std::string ReceivedMessage, std::string CommandTrigger)
     {
         std::string CommandParameter = ReceivedMessage;
-        CommandParameter.substr(CommandTrigger.length());
+        CommandParameter = CommandParameter.substr(CommandTrigger.length());
         while (CommandParameter[0] == ' ')
         {
-            CommandParameter.substr(1);
+            CommandParameter = CommandParameter.substr(1);
         }
         if (CommandParameter == "")
         {
