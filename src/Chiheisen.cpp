@@ -27,6 +27,9 @@
 #include "CHSBotMsg.cpp"
 #include "CHSCommandJudge.cpp"
 #include "CHSHelpDoc.cpp"
+#ifdef CHIHEISENDEBUG
+#include "CHSDebug.cpp"
+#endif
 
 #define ReplyJudger(JudgeCondition) if(Chiheisen::CommandSelector(IncomingMessage, JudgeCondition))
 
@@ -53,6 +56,12 @@ public:
         std::string HelpParameter = Chiheisen::CommandParameterPasseer(IncomingMessage, "/help");
         HelpMainPage(e, HelpParameter);
       }
+      #ifdef CHIHEISENDEBUG
+      ReplyJudger ("/printoutdatabase")
+      {
+        Printouthelpdb(e, DefaultHelpMsgDB);
+      }
+      #endif
       return 0;
     }
     );
