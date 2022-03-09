@@ -51,5 +51,5 @@ namespace Chiheisen
                 e.group.sendMessage(HelpDocNotExist);
             }
         }
-	  }
+	}
 }

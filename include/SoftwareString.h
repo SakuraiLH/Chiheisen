@@ -47,7 +47,7 @@
 	std::string ChiheisenCompileTime = __TIMESTAMP__;
 
 const std::string ChiheisenAuthorship = "SakuraiLH";
-const unsigned short MinChiheisenSoftwareVersion = 100;
+const unsigned short MinChiheisenSoftwareVersion = 109;
 const std::string ChiheisenSoftwareDistributionCodename = "Alexanderite";
 const std::string ChiheisenSoftwareName = "Chihensen";
 inline const std::string ChiheisenSoftwareVersionMainline = "1.0.0";
