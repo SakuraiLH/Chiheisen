@@ -42,6 +42,10 @@ namespace Chiheisen
                 std::string MsgDBReadings = DefaultHelpMsgDB[Parameter];
                 e.group.sendMessage(MsgDBReadings);
             }
+            else if (Parameter == "list")
+            {
+                e.group.sendMessage(HelpList);
+            }
             else
             {
                 e.group.sendMessage(HelpDocNotExist);
