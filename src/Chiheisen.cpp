@@ -33,10 +33,8 @@
 using json = nlohmann::json;
 using namespace MiraiCP;
 
-// 插件实例
 class Main : public CPPPlugin {
 public:
-  // 配置插件信息
   Main() : CPPPlugin(PluginConfig("com.chiheisen.chip", "Chiheisen", "1", "SakuraiLH", "地平线!", "2022-02-26")) {}
   void onEnable() override {
     Event::processor.registerEvent<GroupMessageEvent>([](GroupMessageEvent e){
@@ -61,11 +59,9 @@ public:
   }
 
   void onDisable() override {
-    /*插件结束*/
   }
 };
 
-// 绑定当前插件实例
 void MiraiCP::enrollPlugin() {
   MiraiCP::enrollPlugin0(new Main());
 }
